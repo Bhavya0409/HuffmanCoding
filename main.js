@@ -37,6 +37,8 @@ getData().then((data) => {
   })
   console.log(freq);
   console.log('freqSorted', freqSorted);
+
+  // TODO: Use freqsorted as the list of keys in order from most to least number of characters to create huffman encoding
 }, (error) => {
   console.log('Error getting file');
 })
