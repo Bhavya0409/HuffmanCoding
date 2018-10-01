@@ -1,10 +1,22 @@
 const fs = require('fs');
+const VALID_CHARACTERS = 'abcdefghijklmnopqrstuvwxyz';
 
 getData = () => {
   return new Promise((resolve, reject) => {
     fs.readFile("input.dat", "utf-8", (err, data) => {
-      if (err) reject('Error getting file');
-      else resolve(data);
+      if (err) {
+        reject('Error getting file')
+      }
+      else {
+        let filteredInput = ''
+        const lowercase = data.trim().toLowerCase();
+        for (let i = 0; i < lowercase.length; i++) {
+          if (VALID_CHARACTERS.indexOf(lowercase.charAt(i)) !== -1) {
+            filteredInput += lowercase.charAt(i);
+          }
+        }
+        resolve(filteredInput);
+      }
     })
   })
 }
